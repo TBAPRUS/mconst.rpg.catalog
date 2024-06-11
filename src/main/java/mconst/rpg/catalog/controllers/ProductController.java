@@ -25,10 +25,10 @@ public class ProductController {
     @GetMapping()
     public GetResponse get(@RequestParam(defaultValue = "20") Integer limit, @RequestParam(defaultValue = "0") Integer offset) {
         var products = this.productService.get(limit, offset);
-        var count = this.productService.getCount();
+        var total = this.productService.getTotal();
         return new GetResponse(
                 productMapper.map(products),
-                count
+                total
         );
     }
 }

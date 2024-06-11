@@ -3,10 +3,12 @@ package mconst.rpg.catalog.models.entities;
 import com.baeldung.jooq.introduction.db.public_.enums.ProductStatus;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.Instant;
 
 @Data
+@NoArgsConstructor
 @AllArgsConstructor
 public class ProductEntity {
     private Integer id;
