@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: catalog
+  datasource:
+    url: jdbc:postgresql://localhost:5432/catalogs
+    username: admin
+    password: secretpassword123
+    driver-class-name: org.postgresql.Driver

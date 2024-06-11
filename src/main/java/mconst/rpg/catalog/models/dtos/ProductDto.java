@@ -1,0 +1,22 @@
+package mconst.rpg.catalog.models.dtos;
+
+import com.baeldung.jooq.introduction.db.public_.enums.ProductStatus;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.time.Instant;
+
+@Data
+@AllArgsConstructor
+public class ProductDto {
+    private Integer id;
+    private String name;
+    private String description;
+    private Boolean isInfinite;
+    private Integer count;
+    private Boolean isEndless;
+    private Instant endDate;
+    private Integer price;
+    private Integer discountPrice;
+    private ProductStatus status;
+}
