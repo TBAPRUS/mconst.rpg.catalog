@@ -22,4 +22,8 @@ public class ProductService {
     public Integer getTotal() {
         return productRepository.getCount();
     }
+
+    public ProductEntity create(ProductEntity product) {
+        return productRepository.insert(product);
+    }
 }

@@ -9,5 +9,6 @@ import java.util.List;
 @Mapper
 public interface ProductMapper {
     ProductDto map(ProductEntity products);
+    ProductEntity map(ProductDto products);
     List<ProductDto> map(List<ProductEntity> products);
 }

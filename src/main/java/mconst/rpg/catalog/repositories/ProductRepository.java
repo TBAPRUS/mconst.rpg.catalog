@@ -28,4 +28,12 @@ public class ProductRepository {
         return create
                 .fetchCount(Products.PRODUCTS);
     }
+
+    public ProductEntity insert(ProductEntity product) {
+        return create
+                .insertInto(Products.PRODUCTS, Products.PRODUCTS.NAME, Products.PRODUCTS.DESCRIPTION, Products.PRODUCTS.IS_INFINITE, Products.PRODUCTS.COUNT, Products.PRODUCTS.PRICE)
+                .values(product.getName(), product.getDescription(), product.getIsInfinite(), product.getCount(), product.getPrice())
+                .returning()
+                .fetchOneInto(ProductEntity.class);
+    }
 }
