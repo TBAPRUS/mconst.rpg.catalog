@@ -16,9 +16,5 @@ public class ProductDto {
     private String description;
     private Boolean isInfinite;
     private Integer count;
-    private Boolean isEndless;
-    private Instant endDate;
     private Integer price;
-    private Integer discountPrice;
-    private ProductStatus status;
 }

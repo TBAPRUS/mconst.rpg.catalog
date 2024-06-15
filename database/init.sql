@@ -6,17 +6,11 @@ CREATE TABLE products (
     description TEXT NOT NULL,
     is_infinite BOOLEAN NOT NULL,
     count INTEGER,
-    is_endless BOOLEAN NOT NULL,
-    end_date TIMESTAMP,
-    price INTEGER NOT NULL,
-    discount_price INTEGER,
-    status PRODUCT_STATUS NOT NULL DEFAULT 'NOT_AVAILABLE'
+    price INTEGER NOT NULL
 );
 
-INSERT INTO products (name, description, is_infinite, count, is_endless, end_date, price, discount_price, status)
+INSERT INTO products (name, description, is_infinite, count, price)
 VALUES
-    ('7 Days Premium', 'Good boost', true, null, false, null, 790, null, 'AVAILABLE'),
-    ('Season skin', 'Wow, it is so cool!', false, 250, true, '2024-09-15 00:00:00', 2990, null, 'AVAILABLE'),
-    ('Season skin', 'Wow, it is so cool!', false, 25, true, '2024-09-15 00:00:00', 2990, null, 'RESERVED'),
-    ('Season skin', 'Wow, it is so cool!', false, 25, true, '2024-09-15 00:00:00', 2990, null, 'SOLD'),
-    ('Draft skin', 'IN PROCESS!!!', false, 1337, false, null, 9999, 1111, 'NOT_AVAILABLE');
+    ('7 Days Premium', 'Good boost', true, null, 790),
+    ('Season skin', 'Wow, it is so cool!', false, 250, 2990),
+    ('Helm', 'Super duper helm', false, 1337, 1111);
