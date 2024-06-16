@@ -6,6 +6,7 @@ import mconst.rpg.catalog.repositories.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ProductService {
@@ -25,5 +26,9 @@ public class ProductService {
 
     public ProductEntity create(ProductEntity product) {
         return productRepository.insert(product);
+    }
+
+    public Optional<ProductEntity> addCount(Integer id, Integer count) {
+        return productRepository.addCount(id, count);
     }
 }

@@ -6,6 +6,7 @@ import org.jooq.DSLContext;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class ProductRepository {
@@ -35,5 +36,14 @@ public class ProductRepository {
                 .values(product.getName(), product.getDescription(), product.getIsInfinite(), product.getCount(), product.getPrice())
                 .returning()
                 .fetchOneInto(ProductEntity.class);
+    }
+
+    public Optional<ProductEntity> addCount(Integer id, Integer count) {
+        return Optional.ofNullable(create
+                .update(Products.PRODUCTS)
+                .set(Products.PRODUCTS.COUNT, Products.PRODUCTS.COUNT.add(count))
+                .where(Products.PRODUCTS.ID.eq(id))
+                .returning()
+                .fetchOneInto(ProductEntity.class));
     }
 }

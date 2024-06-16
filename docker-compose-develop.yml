@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: "catalogs"
       POSTGRES_USER: "admin"
       POSTGRES_PASSWORD: "secretpassword123"
+    volumes:
+      - ./database:/docker-entrypoint-initdb.d
     ports:
       - "5432:5432"
     networks:
