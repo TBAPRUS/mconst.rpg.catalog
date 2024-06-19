@@ -25,6 +25,14 @@ public class ProductRepository {
                 .fetchInto(ProductEntity.class);
     }
 
+    public Optional<ProductEntity> getById(Integer id) {
+        return Optional.ofNullable(create
+                .select()
+                .from(Products.PRODUCTS)
+                .where(Products.PRODUCTS.ID.eq(id))
+                .fetchOneInto(ProductEntity.class));
+    }
+
     public Integer getCount() {
         return create
                 .fetchCount(Products.PRODUCTS);

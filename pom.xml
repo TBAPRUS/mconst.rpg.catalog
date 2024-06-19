@@ -48,6 +48,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-cache</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.github.ben-manes.caffeine</groupId>
+			<artifactId>caffeine</artifactId>
+		</dependency>
 
 
 		<dependency>
@@ -91,32 +99,32 @@
 <!--				</configuration>-->
 <!--			</plugin>-->
 
-			<plugin>
-				<groupId>org.jooq</groupId>
-				<artifactId>jooq-codegen-maven</artifactId>
-				<executions>
-					<execution>
-						<phase>generate-sources</phase>
-						<goals>
-							<goal>generate</goal>
-						</goals>
-						<configuration>
-							<jdbc>
-								<driver>org.postgresql.Driver</driver>
-								<url>jdbc:postgresql://localhost:5432/catalogs</url>
-								<user>admin</user>
-								<password>secretpassword123</password>
-							</jdbc>
-							<generator>
-								<target>
-									<packageName>com.baeldung.jooq.introduction.db</packageName>
-									<directory>src/main/java</directory>
-								</target>
-							</generator>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
+<!--			<plugin>-->
+<!--				<groupId>org.jooq</groupId>-->
+<!--				<artifactId>jooq-codegen-maven</artifactId>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>generate-sources</phase>-->
+<!--						<goals>-->
+<!--							<goal>generate</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<jdbc>-->
+<!--								<driver>org.postgresql.Driver</driver>-->
+<!--								<url>jdbc:postgresql://localhost:5432/catalogs</url>-->
+<!--								<user>admin</user>-->
+<!--								<password>secretpassword123</password>-->
+<!--							</jdbc>-->
+<!--							<generator>-->
+<!--								<target>-->
+<!--									<packageName>com.baeldung.jooq.introduction.db</packageName>-->
+<!--									<directory>src/main/java</directory>-->
+<!--								</target>-->
+<!--							</generator>-->
+<!--						</configuration>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 

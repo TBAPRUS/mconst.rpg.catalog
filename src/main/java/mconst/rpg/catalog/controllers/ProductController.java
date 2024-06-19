@@ -27,12 +27,21 @@ public class ProductController {
 
     @GetMapping()
     public GetResponse get(@RequestParam(defaultValue = "20") Integer limit, @RequestParam(defaultValue = "0") Integer offset) {
+        log.info("ProductController get {}, {}", limit, offset);
         var products = productService.get(limit, offset);
         var total = productService.getTotal();
         return new GetResponse(
                 productMapper.map(products),
                 total
         );
+    }
+
+    @GetMapping("/{id}")
+    public ProductDto getById(@PathVariable Integer id) {
+        log.info("ProductController getById {}", id);
+        var product = productService.getById(id);
+        return productMapper.map(product
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND)));
     }
 
     @PostMapping()
@@ -47,8 +56,7 @@ public class ProductController {
             throw new BadRequestException("Count should be equal or more than 0");
         }
         var product = productService.addCount(id, addCountRequest.getCount());
-        return productMapper
-                .map(product
-                        .orElseThrow(() -> new ResponseStatusException(NOT_FOUND)));
+        return productMapper.map(product
+                .orElseThrow(() -> new ResponseStatusException(NOT_FOUND)));
     }
 }
