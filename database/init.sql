@@ -14,3 +14,10 @@ VALUES
     ('7 Days Premium', 'Good boost', true, null, 790),
     ('Season skin', 'Wow, it is so cool!', false, 250, 2990),
     ('Helm', 'Super duper helm', false, 1337, 1111);
+
+
+CREATE TABLE blocks (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(256) NOT NULL UNIQUE,
+    count INTEGER DEFAULT 0
+);

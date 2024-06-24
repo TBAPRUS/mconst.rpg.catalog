@@ -54,4 +54,17 @@ public class ProductRepository {
                 .returning()
                 .fetchOneInto(ProductEntity.class));
     }
+
+    public Optional<Long> getProductCount(Long id) {
+        Integer intId = id.intValue();
+        Integer count = create
+                .select(Products.PRODUCTS.COUNT)
+                .from(Products.PRODUCTS)
+                .where(Products.PRODUCTS.ID.eq(intId))
+                .fetchSingle(Products.PRODUCTS.COUNT);
+        if (count != null) {
+            return Optional.of(count.longValue());
+        }
+        return Optional.empty();
+    }
 }

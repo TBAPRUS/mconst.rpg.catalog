@@ -42,4 +42,12 @@ public class ProductService {
     public Optional<ProductEntity> addCount(Integer id, Integer count) {
         return productRepository.addCount(id, count);
     }
+
+    public Boolean checkAvailability(Long id, Long count) {
+        var productCount = productRepository.getProductCount(id);
+        if (productCount.isEmpty()) {
+            throw new RuntimeException();
+        }
+        return productCount.get() >= count;
+    }
 }

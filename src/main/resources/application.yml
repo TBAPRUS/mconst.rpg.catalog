@@ -2,7 +2,9 @@ spring:
   application:
     name: catalog
   datasource:
-    url: jdbc:postgresql://localhost:5432/catalogs
+    url: jdbc:postgresql://localhost:5432/db
     username: admin
     password: secretpassword123
     driver-class-name: org.postgresql.Driver
+server:
+  port: 8081
