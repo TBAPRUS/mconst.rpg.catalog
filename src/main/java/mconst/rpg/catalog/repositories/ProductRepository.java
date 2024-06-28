@@ -57,13 +57,13 @@ public class ProductRepository {
 
     public Optional<Long> getProductCount(Long id) {
         Integer intId = id.intValue();
-        Integer count = create
+        Optional<Integer> count = create
                 .select(Products.PRODUCTS.COUNT)
                 .from(Products.PRODUCTS)
                 .where(Products.PRODUCTS.ID.eq(intId))
-                .fetchSingle(Products.PRODUCTS.COUNT);
-        if (count != null) {
-            return Optional.of(count.longValue());
+                .fetchOptional(Products.PRODUCTS.COUNT);
+        if (count.isPresent()) {
+            return Optional.of(count.get().longValue());
         }
         return Optional.empty();
     }

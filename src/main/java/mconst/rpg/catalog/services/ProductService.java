@@ -1,12 +1,14 @@
 package mconst.rpg.catalog.services;
 
-import com.baeldung.jooq.introduction.db.public_.tables.Products;
 import lombok.extern.slf4j.Slf4j;
 import mconst.rpg.catalog.models.entities.ProductEntity;
+import mconst.rpg.catalog.models.exceptions.ExceptionBody;
+import mconst.rpg.catalog.models.exceptions.NotFoundException;
 import mconst.rpg.catalog.repositories.ProductRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,10 +45,12 @@ public class ProductService {
         return productRepository.addCount(id, count);
     }
 
-    public Boolean checkAvailability(Long id, Long count) {
+    public Boolean checkAvailability(Long id, Long count) throws NotFoundException {
         var productCount = productRepository.getProductCount(id);
         if (productCount.isEmpty()) {
-            throw new RuntimeException();
+            var exceptionBody = new ExceptionBody();
+            exceptionBody.addError(id, "product", "id");
+            throw new NotFoundException(exceptionBody);
         }
         return productCount.get() >= count;
     }

@@ -3,6 +3,7 @@ package mconst.rpg.catalog.controllers;
 import lombok.extern.slf4j.Slf4j;
 import mconst.rpg.catalog.models.ProductMapper;
 import mconst.rpg.catalog.models.dtos.ProductDto;
+import mconst.rpg.catalog.models.exceptions.NotFoundException;
 import mconst.rpg.catalog.models.requests.AddCountRequest;
 import mconst.rpg.catalog.models.requests.CheckProductAvailabilityRequest;
 import mconst.rpg.catalog.models.responses.CheckProductAvailabilityResponse;
@@ -62,7 +63,7 @@ public class ProductController {
     }
 
     @PostMapping("/{id}/check-product-availability")
-    public CheckProductAvailabilityResponse checkProductAvailability(@PathVariable Long id, @RequestBody CheckProductAvailabilityRequest request) {
+    public CheckProductAvailabilityResponse checkProductAvailability(@PathVariable Long id, @RequestBody CheckProductAvailabilityRequest request) throws NotFoundException {
         return new CheckProductAvailabilityResponse(
                 productService.checkAvailability(id, request.getCount())
         );
