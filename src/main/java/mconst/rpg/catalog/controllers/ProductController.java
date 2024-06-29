@@ -63,7 +63,7 @@ public class ProductController {
     }
 
     @PostMapping("/{id}/check-product-availability")
-    public CheckProductAvailabilityResponse checkProductAvailability(@PathVariable Long id, @RequestBody CheckProductAvailabilityRequest request) throws NotFoundException {
+    public CheckProductAvailabilityResponse checkProductAvailability(@PathVariable Long id, @RequestBody CheckProductAvailabilityRequest request) {
         return new CheckProductAvailabilityResponse(
                 productService.checkAvailability(id, request.getCount())
         );

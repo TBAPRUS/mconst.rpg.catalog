@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.HashMap;
 
 @Data
-public class NotFoundException extends Exception {
+public class NotFoundException extends RuntimeException {
     private ExceptionBody body;
 
     public NotFoundException() {

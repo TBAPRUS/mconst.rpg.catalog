@@ -8,7 +8,6 @@ import mconst.rpg.catalog.repositories.ProductRepository;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +44,7 @@ public class ProductService {
         return productRepository.addCount(id, count);
     }
 
-    public Boolean checkAvailability(Long id, Long count) throws NotFoundException {
+    public Boolean checkAvailability(Long id, Long count) {
         var productCount = productRepository.getProductCount(id);
         if (productCount.isEmpty()) {
             var exceptionBody = new ExceptionBody();

@@ -10,14 +10,14 @@ import java.util.Map;
 @Getter
 @AllArgsConstructor
 public class ExceptionBody {
-    Map<String, Object> error;
+    Map<String, Object> errors;
 
     public ExceptionBody() {
-        error = new HashMap<>();
+        errors = new HashMap<>();
     }
 
     public void addError(Object value, String ... fields) {
-        Map<String, Object> ptr = error;
+        Map<String, Object> ptr = errors;
         for (int i = 0; i < fields.length - 1; i++) {
             var field = fields[i];
             if (!ptr.containsKey(field)) {
