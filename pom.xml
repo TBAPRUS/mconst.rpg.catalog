@@ -111,7 +111,7 @@
 <!--						<configuration>-->
 <!--							<jdbc>-->
 <!--								<driver>org.postgresql.Driver</driver>-->
-<!--								<url>jdbc:postgresql://localhost:5432/catalogs</url>-->
+<!--								<url>jdbc:postgresql://localhost:5432/db</url>-->
 <!--								<user>admin</user>-->
 <!--								<password>secretpassword123</password>-->
 <!--							</jdbc>-->

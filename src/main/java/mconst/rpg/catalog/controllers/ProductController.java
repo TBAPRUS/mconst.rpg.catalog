@@ -29,7 +29,6 @@ public class ProductController {
 
     @GetMapping()
     public GetResponse get(@RequestParam(defaultValue = "20") Integer limit, @RequestParam(defaultValue = "0") Integer offset) {
-        log.info("ProductController get {}, {}", limit, offset);
         var products = productService.get(limit, offset);
         var total = productService.getTotal();
         return new GetResponse(
@@ -40,7 +39,6 @@ public class ProductController {
 
     @GetMapping("/{id}")
     public ProductDto getById(@PathVariable Integer id) {
-        log.info("ProductController getById {}", id);
         var product = productService.getById(id);
         return productMapper.map(product
                 .orElseThrow(() -> new ResponseStatusException(NOT_FOUND)));
@@ -65,7 +63,7 @@ public class ProductController {
     @PostMapping("/{id}/check-product-availability")
     public CheckProductAvailabilityResponse checkProductAvailability(@PathVariable Long id, @RequestBody CheckProductAvailabilityRequest request) {
         return new CheckProductAvailabilityResponse(
-                productService.checkAvailability(id, request.getCount())
+                productService.checkAvailability(id, request.getCount(), request.getPricePerOne())
         );
     }
 }

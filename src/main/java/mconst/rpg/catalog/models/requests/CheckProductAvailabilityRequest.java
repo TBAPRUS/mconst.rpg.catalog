@@ -9,4 +9,5 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class CheckProductAvailabilityRequest {
     private Long count;
+    private Long pricePerOne;
 }
